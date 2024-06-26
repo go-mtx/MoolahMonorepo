@@ -56,4 +56,4 @@ npm-debug.*
 web-build/
 cache/
 
-mobile/.env
+apps/moolahplay/.env
