@@ -1,0 +1,8 @@
+{
+  "name": "app-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo for Marker Trax",
+  "license": "MIT",
+  "workspaces": ["apps/*", "packages/*"],
+  "private": true
+}
