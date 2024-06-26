@@ -1,6 +1,6 @@
-import { CreateThemeOptions } from "@rneui/themed";
+import { Theme } from "@react-navigation/native";
 
 export interface ContentData {
   id: string;
-  currentTheme: CreateThemeOptions
+  currentTheme: Theme;
 }

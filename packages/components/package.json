@@ -4,8 +4,6 @@
   "main": "index.ts",
   "license": "MIT",
   "dependencies": {
-    "@rneui/base": "^4.0.0-rc.8",
-    "@rneui/themed": "^4.0.0-rc.8",
     "react-native-element-dropdown": "^2.12.1"
   }
 }

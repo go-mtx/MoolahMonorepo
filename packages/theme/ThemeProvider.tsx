@@ -1,5 +1,4 @@
 import { createContext, useCallback, useState } from 'react';
-import { ThemeProvider } from '@rneui/themed'; // Import from React Native Elements
 import { MoolahDropdown, DropdownData } from '../components/dropdown';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
@@ -9,6 +8,12 @@ import {
   useAppSelector,
 } from 'state';
 
+import {
+  ThemeProvider,
+  DarkTheme,
+  DefaultTheme,
+} from '@react-navigation/native'
+import { useColorScheme } from './hooks/useColorScheme';
 // Create a custom theme context
 const MoolahThemeContext = createContext({
   mode: 'light', // Default theme
@@ -22,14 +27,13 @@ export const MoolahThemeProvider = ({
 }: {
   children: JSX.Element;
 }) => {
+  const colorScheme = useColorScheme();
   const [currentTheme, setCurrentThemeState] = useState(THEMES[0]);
 
   const dispatch = useAppDispatch();
 
   const { top } = useSafeAreaInsets();
   const contentData = useAppSelector(selectContentData);
-  //   TODO - configure
-  const mode = 'dark';
 
   const setTheme = useCallback(
     ({ label, value }: DropdownData<string>) => {
@@ -40,7 +44,7 @@ export const MoolahThemeProvider = ({
   );
 
   return (
-    <ThemeProvider theme={{ ...contentData?.currentTheme }}>
+    <ThemeProvider value={contentData?.currentTheme || colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       {process.env.EXPO_PUBLIC_ENV === 'dev' ? (
         <MoolahDropdown
           data={THEMES}
@@ -51,7 +55,7 @@ export const MoolahThemeProvider = ({
       ) : null}
       <MoolahThemeContext.Provider
         value={{
-          mode,
+          mode: colorScheme || '',
           toggleTheme: setTheme,
         }}
       >

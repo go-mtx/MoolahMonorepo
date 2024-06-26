@@ -2,11 +2,8 @@ import { Image, StyleSheet } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import { greeting } from "types";
-import { Spinner } from "components";
-import { Button } from "@rneui/themed";
+import { ButtonsTest, Spinner, ThemedText, ThemedView } from "components";
 
 export default function HomeScreen() {
   return (
@@ -24,8 +21,9 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
       <ThemedText>{greeting}</ThemedText>
-      <Spinner />
-      <Button title={"first button..."} />
+      {/* <Spinner /> */}
+      <ButtonsTest />
+      {/* <Button title={"first button..."} /> */}
     </ParallaxScrollView>
   );
 }

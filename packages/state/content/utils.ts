@@ -1,4 +1,4 @@
-import { CreateThemeOptions } from "@rneui/themed";
+import { Theme } from "@react-navigation/native";
 import { Entry } from "contentful";
 
 /**
@@ -6,7 +6,7 @@ import { Entry } from "contentful";
  */
 export function getThemeSafe(response: {
   items: Entry[];
-}): CreateThemeOptions | undefined {
+}): Theme | undefined {
   const firstItem = response.items[0];
   if (!firstItem) {
     return undefined;
